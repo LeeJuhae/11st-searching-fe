@@ -11,7 +11,7 @@ export default class Home extends Component {
   template() {
     const { apps } = this.$state;
     return `
-		${apps.map(app => `<button class='app'/>${app}</button>`).join('')}
+      ${apps.map(app => `<button class='app'/>${app}</button>`).join('')}
 	`;
   }
   mounted() {
