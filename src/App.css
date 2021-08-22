@@ -1,0 +1,9 @@
+#root {
+  display: flex;
+  justify-content: space-around;
+  width: 270px;
+  height: 585px;
+  margin: auto;
+  background-color: royalblue;
+  border: 1px solid black;
+}
