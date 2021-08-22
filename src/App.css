@@ -1,9 +1,12 @@
 #root {
-  display: flex;
-  justify-content: space-around;
-  width: 270px;
-  height: 585px;
+  width: 360px;
+  height: 780px;
   margin: auto;
   background-color: royalblue;
   border: 1px solid black;
+}
+
+#app-screen {
+  display: flex;
+  justify-content: space-around;
 }
