@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": false,
+    "module": "es6",
+    "target": "es5",
+    "removeComments": true,
+    "sourceMap": true
+  },
+  "include": ["src/**/*", "index.d.ts"],
+  "exclude": ["node_modules"]
+}
