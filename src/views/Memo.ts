@@ -3,7 +3,10 @@ import '../assets/styles/Memo.css';
 
 export default class Memo extends Component {
   setup() {
-    this.$state = { items: [], isAddBtnClicked: false };
+    this.$state = {
+      items: JSON.parse(window.localStorage.getItem('memo')) || [],
+      isAddBtnClicked: false
+    };
   }
 
   template() {
@@ -15,7 +18,7 @@ export default class Memo extends Component {
         <input id='memo-input' type='text' placeholder='메모를 입력하세요'/>
       </div>
       <ul>
-      ${items.map((item, key) => `<li>${item}</li>`).join('')}
+      ${items.map((item, key) => `<li data-index=${key}>${item}</li>`).join('')}
       </ul>
     </div>
 	  `;
@@ -34,6 +37,7 @@ export default class Memo extends Component {
           items: [...items, event.target.value],
           isAddBtnClicked: false
         });
+        window.localStorage.setItem('memo', JSON.stringify(this.$state.items));
       }
     });
   }
