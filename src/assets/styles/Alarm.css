@@ -1,0 +1,20 @@
+#alarm-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.alarm-dropdown-wrapper {
+  background-color: aliceblue;
+}
+
+li {
+  list-style: none;
+}
+
+#btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+  height: auto;
+}

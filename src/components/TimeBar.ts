@@ -2,7 +2,6 @@ import Component from '../core/Component';
 import '../assets/styles/TimeBar.css';
 
 export default class TimeBar extends Component {
-  setup() {}
   template() {
     const date = new Date(Date.now());
     const year = date.getFullYear();
@@ -12,7 +11,7 @@ export default class TimeBar extends Component {
     const minute = date.getMinutes();
     const second = date.getSeconds();
     return `
-      <time datetime='${date}'>${year}년 ${month}월 ${day}일 ${hour}시 ${minute}분 ${second}초</time>
+      <time datetime="${date}">${year}년 ${month}월 ${day}일 ${hour}시 ${minute}분 ${second}초</time>
     `;
   }
 }
