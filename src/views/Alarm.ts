@@ -29,7 +29,7 @@ export default class Alarm extends Component {
     return `
     <div>
       <button class="add-btn">New</button>
-      <div id= ${isAddBtnClicked ? 'alarm-dropdown-wrapper' : 'alarm-dropdown-wrapper hidden'}>
+      <div class=${isAddBtnClicked ? 'alarm-dropdown-wrapper' : 'alarm-dropdown-wrapper hidden'}>
         <label for="slots"></label>
         <select id="slots" name="slots">
         ${options['slots'].map(
@@ -66,7 +66,7 @@ export default class Alarm extends Component {
       `
         )
         .join('')}
-    </ul>
+      </ul>
     </div>
 	  `;
   }
