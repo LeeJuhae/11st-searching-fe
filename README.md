@@ -13,18 +13,18 @@ npm run start
 ├── node_modules
 ├── src
 │   ├── assets
-│   │	├── images
-│	│	└── styles
+│   │   ├── images
+│   │   └── styles
 │   ├── components
-│	│	└── TimeBar.ts
-│	├── core
-│	│	└── Components.ts
+│   │   └── TimeBar.ts
+│   ├── core
+│   │   └── Components.ts
 │   ├── utils
 │   ├── views
-│	│	├── Alarm.ts
-│	│	├── Home.ts
-│	│	├── Memo.ts
-│	│	└── Photo.ts
+│   │   ├── Alarm.ts
+│   │   ├── Home.ts
+│   │   ├── Memo.ts
+│   │   └── Photo.ts
 │   ├── App.css
 │   └── App.ts
 ├── .gitignore
