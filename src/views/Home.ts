@@ -15,9 +15,10 @@ export default class Home extends Component {
 	`;
   }
   mounted() {
-    if (this.$state['active'] === 'alarm') new Alarm(this.$target, {});
-    else if (this.$state['active'] === 'memo') new Memo(this.$target, {});
-    else if (this.$state['active'] === 'photo') new Photo(this.$target, {});
+    const pathname = window.location.pathname;
+    if (pathname === '/alarm') new Alarm(this.$target, {});
+    else if (pathname === '/memo') new Memo(this.$target, {});
+    else if (pathname === '/photo') new Photo(this.$target, {});
   }
   setEvent() {
     const { apps } = this.$state;
@@ -29,3 +30,7 @@ export default class Home extends Component {
     });
   }
 }
+
+window.onpopstate = () => {
+  console.log('here');
+};
