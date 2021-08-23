@@ -25,6 +25,7 @@
   font-size: small;
   height: auto;
   line-height: auto;
+  word-break: break-all;
   border: 1px solid black;
   background-color: white;
 }
