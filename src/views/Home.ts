@@ -11,7 +11,7 @@ export default class Home extends Component {
   template() {
     const { apps } = this.$state;
     return `
-      ${apps.map(app => `<button class='app'/>${app}</button>`).join('')}
+      ${apps.map(app => `<button class='app' draggable='true'/>${app}</button>`).join('')}
 	`;
   }
   mounted() {
@@ -26,6 +26,12 @@ export default class Home extends Component {
       const pathName = routes[target.innerHTML];
       window.history.pushState({}, pathName, window.location.origin + pathName);
       this.setState({ apps, active: target.innerHTML });
+    });
+    this.addEvent('drag', '.app', ({ target }) => {
+      console.log(target.innerHTML, 'drag');
+    });
+    this.addEvent('drop', '.app', ({ target }) => {
+      console.log('drop');
     });
   }
 }
