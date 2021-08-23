@@ -3,23 +3,31 @@ import '../assets/styles/Memo.css';
 
 export default class Memo extends Component {
   setup() {
+    // memo example: 가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하
     this.$state = {
       items: JSON.parse(window.localStorage.getItem('memo')) || [],
-      isAddBtnClicked: false
+      isAddBtnClicked: false,
+      selectedIdx: -1
     };
   }
-
   template() {
-    const { items, isAddBtnClicked } = this.$state;
+    const { items, isAddBtnClicked, selectedIdx } = this.$state;
     return `
-    <div>
+    <div id="memo-wrapper">
       <button class="add-btn">New</button>
       <div class=${isAddBtnClicked ? 'memo-input-wrapper' : 'memo-input-wrapper hidden'}>
-        <input id='memo-input' type='text' placeholder='메모를 입력하세요'/>
+        <input id="memo-input" type="text" placeholder="메모를 입력하세요"/>
       </div>
-      <ul>
-      ${items.map((item, key) => `<li data-index=${key}>${item}</li>`).join('')}
-      </ul>
+      <div>
+      ${items
+        .map(
+          (item, key) =>
+            `<div class=${
+              selectedIdx == key ? 'memo-input-unfold' : 'memo-input'
+            } data-index=${key}>${item}</div>`
+        )
+        .join('')}
+      </div>
     </div>
 	  `;
   }
@@ -39,6 +47,10 @@ export default class Memo extends Component {
         });
         window.localStorage.setItem('memo', JSON.stringify(this.$state.items));
       }
+    });
+
+    this.addEvent('click', '.memo-input', ({ target }) => {
+      this.setState({ ...this.$state, selectedIdx: target.dataset.index });
     });
   }
 }
