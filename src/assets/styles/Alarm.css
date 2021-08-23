@@ -1,0 +1,11 @@
+#alarm-dropdown-wrapper {
+  background-color: aliceblue;
+}
+
+.hidden {
+  display: none;
+}
+
+li {
+  list-style: none;
+}

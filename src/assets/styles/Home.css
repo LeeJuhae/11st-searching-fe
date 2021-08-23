@@ -1,13 +1,10 @@
-button {
+.app {
   border: none;
   width: 70px;
   height: 70px;
   text-align: center;
   align-items: center;
   font-size: 1rem;
-}
-
-.app {
   background-color: aliceblue;
   border-radius: 5px;
 }
