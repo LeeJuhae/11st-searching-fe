@@ -14,7 +14,10 @@ export default class Memo extends Component {
     const { items, isAddBtnClicked, selectedIdx } = this.$state;
     return `
     <div id="memo-wrapper">
-      <button class="add-btn">New</button>
+      <div id="btn-wrapper">
+        <button id="memo-back-btn"">Back</button>
+        <button id="add-btn">New</button>
+      </div>
       <div class=${isAddBtnClicked ? 'memo-input-wrapper' : 'memo-input-wrapper hidden'}>
         <input id="memo-input" type="text" placeholder="메모를 입력하세요"/>
       </div>
@@ -33,7 +36,7 @@ export default class Memo extends Component {
   }
 
   setEvent() {
-    this.addEvent('click', '.add-btn', ({ target }) => {
+    this.addEvent('click', '#add-btn', ({ target }) => {
       const { items, isAddBtnClicked } = this.$state;
       this.setState({ ...this.$state, isAddBtnClicked: !isAddBtnClicked });
     });
@@ -51,6 +54,10 @@ export default class Memo extends Component {
 
     this.addEvent('click', '.memo-input', ({ target }) => {
       this.setState({ ...this.$state, selectedIdx: target.dataset.index });
+    });
+
+    this.addEvent('click', '#memo-back-btn', () => {
+      window.history.back();
     });
   }
 }

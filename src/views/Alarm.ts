@@ -19,8 +19,11 @@ export default class Alarm extends Component {
       minutes: getSequenceArray(0, 60, 10)
     };
     return `
-    <div>
-      <button class="add-btn">New</button>
+    <div id="alarm-wrapper">
+      <div id="btn-wrapper">
+        <button id="alarm-back-btn"">Back</button>
+        <button id="add-btn">New</button>
+      </div>
       <div class=${isAddBtnClicked ? 'alarm-dropdown-wrapper' : 'alarm-dropdown-wrapper hidden'}>
         <label for="slots"></label>
         <select id="slots" name="slots">
@@ -45,26 +48,24 @@ export default class Alarm extends Component {
         )}
         </select>
         <span>분</span>
-        <button class='save-btn'>저장</button>
+        <button id="save-btn">저장</button>
       </div>
-      <ul>
+      <div>
       ${items
         .map(
-          (item, key) => `
-        <li>
-          ${item}
-          <button class="delete-btn" data-index="${key}">삭제</button>
-        </li>
-      `
+          (item, idx) =>
+            `<div>${item}
+              <button class="delete-btn" data-index="${idx}">삭제</button>
+            </div>`
         )
         .join('')}
-      </ul>
+      </ㅇ>
     </div>
 	  `;
   }
 
   setEvent() {
-    this.addEvent('click', '.add-btn', ({ target }) => {
+    this.addEvent('click', '#add-btn', () => {
       const { isAddBtnClicked } = this.$state;
       this.setState({ ...this.$state, isAddBtnClicked: !isAddBtnClicked });
     });
@@ -76,7 +77,7 @@ export default class Alarm extends Component {
       window.localStorage.setItem('alarm', JSON.stringify(items));
     });
 
-    this.addEvent('click', '.save-btn', ({ target }) => {
+    this.addEvent('click', '#save-btn', () => {
       const { items, isAddBtnClicked, infos } = this.$state;
       this.setState({
         ...this.$state,
@@ -89,6 +90,10 @@ export default class Alarm extends Component {
     this.addEvent('change', 'select', ({ target }) => {
       const { infos } = this.$state;
       this.setState({ ...this.$state, infos: { ...infos, [target.id]: target.value } });
+    });
+
+    this.addEvent('click', '#alarm-back-btn', () => {
+      window.history.back();
     });
   }
 }

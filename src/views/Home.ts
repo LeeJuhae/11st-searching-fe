@@ -6,20 +6,31 @@ import '../assets/styles/Home.css';
 
 export default class Home extends Component {
   setup() {
-    this.$state = { apps: ['alarm', 'memo', 'photo'], active: 'home' };
+    this.$state = {
+      apps: ['alarm', 'memo', 'photo'],
+      active: 'home',
+      temp: {
+        '/alarm': new Alarm(this.$target, {}),
+        '/memo': new Memo(this.$target, {}),
+        '/photo': new Photo(this.$target, {})
+      }
+    };
   }
+
   template() {
     const { apps } = this.$state;
     return `
-      ${apps.map(app => `<button class='app'/>${app}</button>`).join('')}
+      ${apps.map(app => `<button class="app"/>${app}</button>`).join('')}
 	`;
   }
+
   mounted() {
     const pathname = window.location.pathname;
-    if (pathname === '/alarm') new Alarm(this.$target, {});
-    else if (pathname === '/memo') new Memo(this.$target, {});
-    else if (pathname === '/photo') new Photo(this.$target, {});
+    if (pathname !== '/') {
+      this.$state.temp[pathname].render();
+    }
   }
+
   setEvent() {
     const { apps } = this.$state;
     const routes = { alarm: '/alarm', memo: '/memo', photo: '/photo' };
@@ -30,7 +41,3 @@ export default class Home extends Component {
     });
   }
 }
-
-window.onpopstate = () => {
-  console.log('here');
-};

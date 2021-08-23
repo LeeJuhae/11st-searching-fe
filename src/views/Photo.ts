@@ -10,17 +10,17 @@ export default class Photo extends Component {
   template() {
     const { selectedIdx } = this.$state;
     return `
-    <div id='photo-wrapper'>
-      <div id='photo-list'>
+    <div id="photo-wrapper">
+      <button id="photo-back-btn"">Back</button>
+      <div id="photo-list">
         ${getSequenceArray(0, 10, 1)
           .map((ele, idx) => {
             const className = selectedIdx == idx ? 'selected-photo' : 'photo';
             return `<img class=${className} data-index=${idx} src=${photos[idx]}/>`;
           })
           .join('')}
-
       </div>
-      <div id='selected-photo-wrapper'>
+      <div id="selected-photo-wrapper">
         <img src=${photos[selectedIdx]} width="100%' height="100%"/>
       </div>
     </div>
@@ -29,6 +29,10 @@ export default class Photo extends Component {
   setEvent() {
     this.addEvent('click', '.photo', ({ target }) => {
       this.setState({ selectedIdx: target.dataset.index });
+    });
+
+    this.addEvent('click', '#photo-back-btn', () => {
+      window.history.back();
     });
   }
 }

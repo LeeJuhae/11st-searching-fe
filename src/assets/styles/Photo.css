@@ -31,3 +31,7 @@
   text-align: center;
   align-items: center;
 }
+
+#photo-back-btn {
+  width: 60px;
+}
