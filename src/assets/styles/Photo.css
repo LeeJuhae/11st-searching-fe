@@ -1,14 +1,33 @@
 #photo-wrapper {
-  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 
 #photo-list {
   display: flex;
+  overflow: scroll;
+  height: 100px;
 }
 
-img {
+.photo {
   width: 60px;
   height: 60px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 5px;
+}
+
+.selected-photo {
+  border: 3px solid red;
+  width: 60px;
+  height: 60px;
+  padding: 5px;
+}
+
+#selected-photo-wrapper {
+  background-color: black;
+  height: 100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
 }
