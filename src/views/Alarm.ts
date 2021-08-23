@@ -5,11 +5,12 @@ import { getSequenceArray } from '../utils/getSequenceArray';
 export default class Alarm extends Component {
   setup() {
     this.$state = {
-      items: [],
+      items: JSON.parse(window.localStorage.getItem('alarm')) || [],
       isAddBtnClicked: false,
       infos: { slots: '오전', hours: '00', minutes: '00' }
     };
   }
+
   template() {
     const { items, isAddBtnClicked, infos } = this.$state;
     const options = {
@@ -61,16 +62,20 @@ export default class Alarm extends Component {
     </div>
 	  `;
   }
+
   setEvent() {
     this.addEvent('click', '.add-btn', ({ target }) => {
       const { isAddBtnClicked } = this.$state;
       this.setState({ ...this.$state, isAddBtnClicked: !isAddBtnClicked });
     });
+
     this.addEvent('click', '.delete-btn', ({ target }) => {
       const items = [...this.$state.items];
       items.splice(target.dataset.index, 1);
       this.setState({ items });
+      window.localStorage.setItem('alarm', JSON.stringify(items));
     });
+
     this.addEvent('click', '.save-btn', ({ target }) => {
       const { items, isAddBtnClicked, infos } = this.$state;
       this.setState({
@@ -78,7 +83,9 @@ export default class Alarm extends Component {
         items: [...items, `${infos['slots']} ${infos['hours']}시 ${infos['minutes']}분 `],
         isAddBtnClicked: false
       });
+      window.localStorage.setItem('alarm', JSON.stringify(this.$state['items']));
     });
+
     this.addEvent('change', 'select', ({ target }) => {
       const { infos } = this.$state;
       this.setState({ ...this.$state, infos: { ...infos, [target.id]: target.value } });
