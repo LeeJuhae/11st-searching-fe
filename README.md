@@ -2,7 +2,10 @@
 
 ### 실행 방법
 ```bash
-# node version: v13.14.0
+# node version: v13.14.0 
+
+# node version이 13보다 낮을 경우 node version 변경
+# nvm use 13 
 npm install
 npm run start
 ```
