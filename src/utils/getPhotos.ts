@@ -9,5 +9,5 @@ import img8 from '../assets/images/img8.jpeg';
 import img9 from '../assets/images/img9.jpeg';
 import img10 from '../assets/images/img10.jpeg';
 
-const photos = { img1, img2, img3, img4, img5, img6, img7, img8, img9, img10 };
+const photos = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
 export default photos;

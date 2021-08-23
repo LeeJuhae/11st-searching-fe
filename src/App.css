@@ -4,9 +4,12 @@
   margin: auto;
   background-color: royalblue;
   border: 1px solid black;
+  display: flex;
+  flex-direction: column;
 }
 
 #app-screen {
+  flex: 1;
   display: flex;
   justify-content: space-around;
 }
