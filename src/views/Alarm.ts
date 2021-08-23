@@ -22,7 +22,7 @@ export default class Alarm extends Component {
     <div id="alarm-wrapper">
       <div id="btn-wrapper">
         <button id="alarm-back-btn"">Back</button>
-        <button id="add-btn">New</button>
+        <button id="alarm-add-btn">New</button>
       </div>
       <div class=${isAddBtnClicked ? 'alarm-dropdown-wrapper' : 'alarm-dropdown-wrapper hidden'}>
         <label for="slots"></label>
@@ -65,7 +65,7 @@ export default class Alarm extends Component {
   }
 
   setEvent() {
-    this.addEvent('click', '#add-btn', () => {
+    this.addEvent('click', '#alarm-add-btn', () => {
       const { isAddBtnClicked } = this.$state;
       this.setState({ ...this.$state, isAddBtnClicked: !isAddBtnClicked });
     });

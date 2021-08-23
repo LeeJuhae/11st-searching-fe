@@ -7,6 +7,7 @@ export default class Photo extends Component {
   setup() {
     this.$state = { selectedIdx: 0 };
   }
+
   template() {
     const { selectedIdx } = this.$state;
     return `
@@ -26,6 +27,7 @@ export default class Photo extends Component {
     </div>
 	  `;
   }
+
   setEvent() {
     this.addEvent('click', '.photo', ({ target }) => {
       this.setState({ selectedIdx: target.dataset.index });

@@ -16,7 +16,7 @@ export default class Memo extends Component {
     <div id="memo-wrapper">
       <div id="btn-wrapper">
         <button id="memo-back-btn"">Back</button>
-        <button id="add-btn">New</button>
+        <button id="memo-add-btn">New</button>
       </div>
       <div class=${isAddBtnClicked ? 'memo-input-wrapper' : 'memo-input-wrapper hidden'}>
         <input id="memo-input" type="text" placeholder="메모를 입력하세요"/>
@@ -36,7 +36,7 @@ export default class Memo extends Component {
   }
 
   setEvent() {
-    this.addEvent('click', '#add-btn', ({ target }) => {
+    this.addEvent('click', '#memo-add-btn', () => {
       const { items, isAddBtnClicked } = this.$state;
       this.setState({ ...this.$state, isAddBtnClicked: !isAddBtnClicked });
     });
